@@ -1,0 +1,20 @@
+ul {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    list-style-type: none;
+}
+
+li a {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
+}
+
+.logo {
+    width: 400px;
+}
