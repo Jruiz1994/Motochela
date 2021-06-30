@@ -1,17 +1,28 @@
 import './Navbar.css';
-import React from 'react';
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 import img from './logoDer.png';
 import CartWidget from '../CartWidget/CartWidget';
-import {Link} from 'react-router-dom';
 
-function Navbar() {
+const Navbar = () => {
+  const history = useHistory([]);
+
+  const handleChange = (e) => {
+    if (e.target.value)
+      history.push(`/category/${e.target.value}`);
+  }
   return (
     <header>
       <ul className='menu'>
         <a href='/'> <img src={img} alt="Logo de motochela" className='logo'/> </a>
-        <Link to="/" className="Link">Productos</Link>
-        <Link to="/nosotros" className="Link">Nosotros</Link>
-        <Link to="/contacto" className="Link">Contacto</Link>
+        <select onChange={handleChange}>
+        <option value="">Seleccione categoría</option>
+        <option value="cervezas">cervezas</option>
+        <option value="whisky">whisky</option>
+        <option value="fernet">fernet</option>
+        <option value="aperitivos">aperitivos</option>
+        <option value="otros">otros</option>
+      </select>
         <CartWidget/>
       </ul>
     </header>

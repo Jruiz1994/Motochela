@@ -1,5 +1,5 @@
 ul {
-    background-color: #FFFFFF;
+    background-color: #DBE0E7;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -8,13 +8,17 @@ ul {
     list-style-type: none;
 }
 
-.Link {
+.logo {
+    width: 400px;
+}
+
+.linksNavbar {
     font-size: 30px;
     font-weight: bold;
     font-family: 'Open Sans Condensed', sans-serif;
     color: black;
 }
 
-.logo {
-    width: 400px;
+.menu {
+    background-color: #ABC2D4;
 }

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import { Card, Image } from 'semantic-ui-react';
+import './Item.css';
 
-function Item({data}) {
+const Item = ({id, name, image, price, description, stock}) => {
   const [numero, setNumero] = useState(0);
   const handleIncrement = () => {
-    if(numero >= 0 && numero < data.stock) setNumero(numero + 1);
+    if(numero >= 0 && numero < stock) setNumero(numero + 1);
   };
 
   const handleDecrement = () => {
@@ -12,20 +14,24 @@ function Item({data}) {
   };
   return (
 <Card>
-      <Image src={data.image} wrapped ui={false} />
-      <Card.Content>
-        <Card.Header>{data.name}</Card.Header>
-        <Card.Meta>
-          <span className='info'>{data.description}</span>
-        </Card.Meta>
-        <Card.Description>
-          <p>${data.price} por unidad</p>
-          <button onClick={handleIncrement}>+</button>
-          <button onClick={handleDecrement}>-</button>
-          <p>{numero}</p>
-        </Card.Description>
-      </Card.Content>
-    </Card>
+  <Link to={`/item/${id}`} >
+      <Image src={image} wrapped ui={false} />
+  </Link>
+  <Card.Content>
+    <Link to={`/item/${id}`} >
+    <Card.Header>{name}</Card.Header>
+    <Card.Meta>
+      <span className='info'>{description}</span>
+    </Card.Meta>
+    <Card.Description>
+      <p>${price} por unidad</p>
+      </Card.Description>
+      </Link>
+      <button className='botonesCantidad' onClick={handleIncrement}>+</button>
+      <button className='botonesCantidad' onClick={handleDecrement}>-</button>
+      <p>{numero}</p>
+  </Card.Content>
+</Card>
   )}
 
   export default Item;
