@@ -1,13 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import './ItemListContainer.css';
 import ItemList from '../ItemList/ItemList';
 
 const ItemListContainer = () => {
   const { categoryName } = useParams();
-
   const [items, setItems] = useState([]);
+  const history = useHistory();
+  console.log(`history`, history);
 
   useEffect(() => {
     (async () => {

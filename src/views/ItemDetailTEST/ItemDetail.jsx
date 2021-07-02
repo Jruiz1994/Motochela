@@ -118,13 +118,9 @@ const items = [{
     description: 'Fernet Branca de menta 750mL'
   } ];
 
-  // function GetItemById(itemId) {
-  //   return items.id === itemId;
-  // }
   return (
     
 		<div className='Home' style={{ padding: 40 }}>
-			{/* <ItemDetailContainer item={items.find(GetItemById(id))}/> */}
       <ItemDetailContainer item={item}/>
 		</div>
 	);
