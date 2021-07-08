@@ -1,27 +1,22 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
 import ItemList from '../ItemList/ItemList';
+import {useCartContext} from '../../context/CartContext';
+import React, {useEffect, useState} from 'react';
 
 const ItemListContainer = () => {
   const { categoryName } = useParams();
+  const { database } = useCartContext();
   const [items, setItems] = useState([]);
-  const history = useHistory();
-  console.log(`history`, history);
 
   useEffect(() => {
-    (async () => {
-      const { data } = await axios.get("https://mocki.io/v1/22fbf394-b1fc-4947-935e-40f05c935f53");
-      if (!categoryName) return setItems(data);
-      const catItems = data.filter(item => item.category === categoryName);
-      setItems(catItems);
-    })();
-  }, [categoryName]);
+    if (!categoryName) return setItems(database);
+    const data = database.filter(item => item.category === categoryName);
+    setItems(data);
+  }, [categoryName, database]);
+
   return (
-    <div className='container'>
-      <ItemList items={items} />
-</div>
-)
+    <ItemList items={items} />
+  )
 }
 export default ItemListContainer

@@ -1,10 +1,12 @@
 import './App.css';
 import RouterApp from './routers/RouterApp';
+import {CartProvider} from './context/CartContext';
 
 function App() {
-    return ( <>
+    return ( 
+    <CartProvider>
         <RouterApp/>
-        </>
+    </CartProvider>
     );
 }
 

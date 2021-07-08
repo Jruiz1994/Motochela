@@ -2,7 +2,7 @@ import './Navbar.css';
 import React from 'react'
 import {  Link, useHistory } from 'react-router-dom'
 import img from './logoDer.png';
-import CartWidget from '../CartWidget/CartWidget';
+import carrito from './carrito.png';
 import { Dropdown } from 'semantic-ui-react';
 
 const Navbar = () => {
@@ -16,66 +16,47 @@ const Navbar = () => {
   },
     {
     key: 'cervezas',
-    text: 'Cervezas',
+    text: 'cervezas',
     value: 'cervezas'
   },
     {
     key: 'fernet',
-    text: 'Fernet',
+    text: 'fernet',
     value: 'fernet'
   },
     {
     key: 'aperitivos',
-    text: 'Aperitivos',
+    text: 'aperitivos',
     value: 'aperitivos'
   },
     {
     key: 'whisky',
-    text: 'Whisky',
+    text: 'whisky',
     value: 'whisky'
   },
     {
     key: 'otros',
-    text: 'Otros',
+    text: 'otros',
     value: 'otros'
   }];
 
-  const redirect = (event, {name, value}) => {
-    console.log(`value`, value)
-    if(value === ''){
-      history.push('/');
-      
-    }else{
-    history.push('/category/' + value);
-    }
+  const handleChange = (e) => {
+    if (e.target.value){
+      history.push(`/category/${e.target.value}`)
+      }
   }
 
   return (
-    <header>
-      <ul className='menu'>
-        <Link to='/'> <img src={img} alt="Logo de motochela" className='logo'/> </Link>
-        <nav>
-         <ul>
-           <li>
-             <Link to="/" className='linksNavbar'>Home</Link>
-           </li>
-           <li>
-             <Link to="/nosotros"  className='linksNavbar'>Nosotros</Link>
-           </li>
-           <li>
-             <Link to="/contacto"  className='linksNavbar'>Contacto</Link>
-           </li>
-         </ul>
-       </nav>
-        
-      <Dropdown placeholder="Seleccione una categoria" selection options={categoriesOptions} onChange={redirect} />
-
-        <CartWidget/>
-      </ul>
-    </header>
+  <nav>
+    <Link to='/'> <img src={img} alt="Logo de motochela" className='logo'/> </Link>
+    <Link to="/" className='linksNavbar'>Home</Link>
+    <Link to="/nosotros"  className='linksNavbar'>Nosotros</Link>
+    <Link to="/contacto"  className='linksNavbar'>Contacto</Link>
+    <Dropdown placeholder="Seleccione una categoria" selection options={categoriesOptions} onChange={handleChange} />
+    <Link to='/cart'>
+      <img src={carrito} alt="Carrito de compras" className='carrito'/>
+    </Link>
+  </nav>
   )
 }
-
-
-
 export default Navbar;

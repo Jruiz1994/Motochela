@@ -134,3 +134,5 @@ const items = [{
         "category": "fernet"
     }
 ]
+
+// const miApi = 'https://mocki.io/v1/827bfe42-90d3-404a-87eb-4ae08ff3882a';

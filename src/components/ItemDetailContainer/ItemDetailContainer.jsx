@@ -1,24 +1,33 @@
-import ItemDetailed from '../ItemDetailed/ItemDetailed';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import ItemDetailed from '../ItemDetailed/ItemDetailed';
+import { useCartContext } from '../../context/CartContext';
 
 const ItemDetailContainer = () => {
-  const { id } = useParams();
-  const [item, setItem] = useState([]);
+const { id } = useParams();
+  const { database } = useCartContext();
+  const [item, setItem] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      const { data } = await axios.get("https://mocki.io/v1/22fbf394-b1fc-4947-935e-40f05c935f53")
-      const foundItem = data.find(item => item.id === +id);
+    const foundItem = database.find(el => el.id === +id);
+    if (foundItem) {
       setItem(foundItem);
-    })();
-  }, [id]);
- 
-	return (<> 
-    <ItemDetailed {...item}/>
-    </>
-  );
-  }
-export default ItemDetailContainer;
+    } else {
+      setError(true);
+    }
+    setLoading(false);
+  }, [id, database]);
+
+  if (error) return <h1>Ese producto no existe</h1>
+
+  if (loading || !item) return <h1>Cargando....</h1>
+
+  return (
+    <ItemDetailed item={item} />
+  )
+}
+
+export default ItemDetailContainer
 
