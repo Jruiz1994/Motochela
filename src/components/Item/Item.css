@@ -2,11 +2,7 @@ img {
     width: 200px;
 }
 
-.botonesCantidad {
-    padding: 2px;
+div.ui.card {
+    width: 200px;
+    margin: 15px 30px;
 }
-
-
-/* div.image {
-    margin-left: 40px;
-} */

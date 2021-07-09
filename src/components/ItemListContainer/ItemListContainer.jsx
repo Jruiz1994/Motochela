@@ -5,18 +5,20 @@ import {useCartContext} from '../../context/CartContext';
 import React, {useEffect, useState} from 'react';
 
 const ItemListContainer = () => {
-  const { categoryName } = useParams();
+  const { category } = useParams();
   const { database } = useCartContext();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    if (!categoryName) return setItems(database);
-    const data = database.filter(item => item.category === categoryName);
+    if (!category) return setItems(database);
+    let data = database.filter(item => item.category === category);
     setItems(data);
-  }, [categoryName, database]);
+  }, [category, database]);
 
   return (
-    <ItemList items={items} />
+    <div className='container'>
+      <ItemList items={items} />
+    </div>
   )
 }
 export default ItemListContainer

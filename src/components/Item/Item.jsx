@@ -4,7 +4,7 @@ import './Item.css';
 
 const Item = ({id, name, image, price, description}) => {
   return (
-<Card>
+<Card className='card'>
   <Link to={`/item/${id}`}>
       <Image src={image} wrapped ui={false}/>
   </Link>

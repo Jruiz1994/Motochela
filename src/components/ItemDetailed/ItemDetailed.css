@@ -3,7 +3,7 @@
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 150px 80px 80px 150px;
     grid-column-gap: 10px;
-    grid-template-areas: "fotoProducto name" "fotoProducto price" "fotoProducto description" "fotoProducto button";
+    grid-template-areas: "fotoProducto name" "fotoProducto price" "fotoProducto description" "fotoProducto count";
     justify-items: center;
     align-content: end;
 }
@@ -31,21 +31,12 @@
     font-size: 20px;
 }
 
-.button {
-    grid-area: button;
+.count {
+    grid-area: count;
     justify-self: left;
 }
 
 .cantidad {
     display: inline-flex;
     margin: 0 10px;
-}
-
-button {
-    padding: 15px;
-}
-
-.botonesCantidad {
-    padding: 2px 8px;
-    margin-bottom: 10px;
 }

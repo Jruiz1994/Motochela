@@ -40,23 +40,32 @@ const Navbar = () => {
     value: 'otros'
   }];
 
-  const handleChange = (e) => {
-    if (e.target.value){
-      history.push(`/category/${e.target.value}`)
-      }
+
+  const redirect = (event, {name, value}) => {
+    console.log(`value`, value)
+    if(value === ''){
+      history.push('/');
+
+    }else{
+    history.push('/category/' + value);
+    }
   }
 
   return (
-  <nav>
-    <Link to='/'> <img src={img} alt="Logo de motochela" className='logo'/> </Link>
-    <Link to="/" className='linksNavbar'>Home</Link>
-    <Link to="/nosotros"  className='linksNavbar'>Nosotros</Link>
-    <Link to="/contacto"  className='linksNavbar'>Contacto</Link>
-    <Dropdown placeholder="Seleccione una categoria" selection options={categoriesOptions} onChange={handleChange} />
+  <div className='nav'>
+    <div className ='logo'>
+    <Link to='/'> <img className='logo' src={img} alt="Logo de motochela"/> </Link>
+    </div>
+    <div className='linksNavbar'>
+    <Link to="/" className='linkNavbar'>Home</Link>
+    <Link to="/nosotros"  className='linkNavbar'>Nosotros</Link>
+    <Link to="/contacto"  className='linkNavbar'>Contacto</Link>
+    </div>
+     <Dropdown className='categorySelector' placeholder="Seleccione una categoria" selection options={categoriesOptions} onChange={redirect} />
     <Link to='/cart'>
       <img src={carrito} alt="Carrito de compras" className='carrito'/>
     </Link>
-  </nav>
+  </div>
   )
 }
 export default Navbar;

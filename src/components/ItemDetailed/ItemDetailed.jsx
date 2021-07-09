@@ -13,8 +13,9 @@ const ItemDetailed = ({item}) =>{
   <h1 className='name'>{item.name}</h1>
   <h2 className='price'>${item.price}</h2>
   <p className='description'>{item.description}</p>
+  <div className='count'>
 {item.stock > 0 && <ItemCount onAdd={onAdd} stock={item.stock} />}
-
+</div>
 </div>
   )}
 
