@@ -4,7 +4,7 @@ import {useCartContext} from '../../context/CartContext';
 import ItemCount from '../ItemCount/ItemCount';
 
 const ItemDetailed = ({item}) =>{
- const { addToCart } = useCartContext();
+  const { addToCart } = useCartContext();
   const onAdd = qty => addToCart(item, qty);
 
   return (
@@ -15,6 +15,7 @@ const ItemDetailed = ({item}) =>{
   <p className='description'>{item.description}</p>
   <div className='count'>
 {item.stock > 0 && <ItemCount onAdd={onAdd} stock={item.stock} />}
+<button className='finish'>Terminar compra</button>
 </div>
 </div>
   )}

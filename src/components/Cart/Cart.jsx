@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext';
+import { Table } from 'semantic-ui-react'
 
 const Cart = () => {
   const { cart, clearCart } = useCartContext();
@@ -10,16 +11,20 @@ const Cart = () => {
   return (
     <div>
       {cart.map((item) => (
-      <table border='1'>
-        <tr>
-          <th>Producto</th>
-          <th>Cantidad</th>
-        </tr>
-        <tr>
-        <td>{item.name}</td>
-        <td>{item.quantity}</td>
-        </tr>
-      </table>
+      <Table celled>
+    <Table.Header>
+      <Table.Row>
+          <Table.HeaderCell>Producto</Table.HeaderCell>
+         <Table.HeaderCell>Cantidad</Table.HeaderCell>
+        </Table.Row>
+    </Table.Header>
+         <Table.Body>
+      <Table.Row>
+        <Table.Cell>{item.name}</Table.Cell>
+        <Table.Cell>{item.quantity}</Table.Cell>
+        </Table.Row>
+    </Table.Body>
+    </Table>
       ))}
       <button onClick={clearCart}>Vaciar carrito</button>
     </div>
