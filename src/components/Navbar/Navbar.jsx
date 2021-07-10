@@ -4,6 +4,7 @@ import {  Link, useHistory } from 'react-router-dom'
 import img from './logoDer.png';
 import carrito from './carrito.png';
 import { Dropdown } from 'semantic-ui-react';
+import {useCartContext} from '../../context/CartContext';
 
 const Navbar = () => {
   
@@ -40,6 +41,7 @@ const Navbar = () => {
     value: 'otros'
   }];
 
+  const { cart } = useCartContext();
 
   const redirect = (event, {name, value}) => {
     console.log(`value`, value)
@@ -62,9 +64,10 @@ const Navbar = () => {
     <Link to="/contacto"  className='linkNavbar'>Contacto</Link>
     </div>
      <Dropdown className='categorySelector' placeholder="Seleccione una categoria" selection options={categoriesOptions} onChange={redirect} />
-    <Link to='/cart'>
+     {cart.length > 0 ? <Link to='/cart'>
       <img src={carrito} alt="Carrito de compras" className='carrito'/>
-    </Link>
+    </Link> : null}
+    
   </div>
   )
 }
