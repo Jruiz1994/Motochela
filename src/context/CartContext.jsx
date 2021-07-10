@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { db } from '../Firebase/firebase'
 
 export const CartContext = createContext({})
 
@@ -29,13 +29,18 @@ export const CartProvider = ({ children }) => {
         }
     }
 
+    const getItems = () => {
+        const productos = []
+        db.collection('items').onSnapshot((querySnapshot) => {
+            querySnapshot.forEach((item) => {
+                productos.push({ ...item.data(), id: item.id })
+            })
+            setDatabase(productos)
+        })
+    }
+
     useEffect(() => {
-        ;(async () => {
-            const { data } = await axios.get(
-                'https://mocki.io/v1/827bfe42-90d3-404a-87eb-4ae08ff3882a'
-            )
-            setDatabase(data)
-        })()
+        getItems()
     }, [])
 
     return (
