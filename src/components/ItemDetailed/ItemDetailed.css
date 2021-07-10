@@ -1,9 +1,9 @@
 .itemDetailed {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 150px 80px 80px 150px;
+    grid-template-rows: 150px 80px 80px 120px 50px;
     grid-column-gap: 10px;
-    grid-template-areas: "fotoProducto name" "fotoProducto price" "fotoProducto description" "fotoProducto count";
+    grid-template-areas: 'fotoProducto name' 'fotoProducto price' 'fotoProducto description' 'fotoProducto count' 'fotoProducto finish';
     justify-items: center;
     align-content: end;
 }
@@ -42,5 +42,6 @@
 }
 
 .finish {
-    display: none;
+    grid-area: finish;
+    justify-self: left;
 }
