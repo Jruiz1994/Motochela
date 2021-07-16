@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
 import { Table } from 'semantic-ui-react'
 import TableWrapper from '../TableWrapper/TableWrapper'
@@ -35,6 +35,9 @@ const Cart = () => {
             </Table>
             <p className="monto">{`El monto total a abonar por su compra es de: $ ${suma}`}</p>
             <button onClick={clearCart}>Vaciar carrito</button>
+            <Link to="/checkout">
+                <button>Ir al pago</button>
+            </Link>
         </div>
     )
 }

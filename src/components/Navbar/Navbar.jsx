@@ -94,7 +94,7 @@ const Navbar = () => {
                         alt="Carrito de compras"
                         className="carrito"
                     />
-                    <p>{cantidad}</p>
+                    <p className="cantidad">{cantidad}</p>
                 </Link>
             ) : null}
         </div>
