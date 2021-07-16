@@ -51,6 +51,12 @@ const Navbar = () => {
         }
     }
 
+    let cantidad = 0
+    cart.map((cartElement) => {
+        cantidad += cartElement.quantity
+        return cantidad
+    })
+
     return (
         <div className="nav">
             <div className="logo">
@@ -88,7 +94,7 @@ const Navbar = () => {
                         alt="Carrito de compras"
                         className="carrito"
                     />
-                    <p>{cart.length}</p>
+                    <p>{cantidad}</p>
                 </Link>
             ) : null}
         </div>

@@ -29,6 +29,10 @@ export const CartProvider = ({ children }) => {
         }
     }
 
+    const removeOfCart = (id) => {
+        setCart(cart.filter((i) => i.id !== id))
+    }
+
     const getItems = () => {
         const productos = []
         db.collection('items').onSnapshot((querySnapshot) => {
@@ -43,6 +47,8 @@ export const CartProvider = ({ children }) => {
         getItems()
     }, [])
 
+    console.log(`cart`, cart)
+
     return (
         <CartContext.Provider
             value={{
@@ -51,6 +57,7 @@ export const CartProvider = ({ children }) => {
                 clearCart,
                 addToCart,
                 isInCart,
+                removeOfCart,
                 database,
             }}
         >

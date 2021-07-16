@@ -27,7 +27,7 @@ const ItemDetailed = ({ item }) => {
             <div className="finish">
                 {cart.length > 0 ? (
                     <Link to="/cart" className="finish">
-                        Terminar compra
+                        <button>Terminar compra</button>
                     </Link>
                 ) : null}
             </div>
