@@ -29,10 +29,6 @@ export const CartProvider = ({ children }) => {
         }
     }
 
-    // const checkout = (cart) => {
-
-    // }
-
     const removeOfCart = (id) => {
         setCart(cart.filter((i) => i.id !== id))
     }
@@ -50,8 +46,6 @@ export const CartProvider = ({ children }) => {
     useEffect(() => {
         getItems()
     }, [])
-
-    console.log(`cart`, cart)
 
     return (
         <CartContext.Provider

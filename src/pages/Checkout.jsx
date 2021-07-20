@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Form } from 'semantic-ui-react'
 import { useCartContext } from '../context/CartContext'
 import { db } from '../Firebase/firebase'
+import './Checkout.css'
 
 function Checkout() {
     const { cart } = useCartContext()
@@ -14,9 +15,19 @@ function Checkout() {
             email: document.getElementById('email').value,
             address: document.getElementById('address').value,
             notas: document.getElementById('notas').value,
+            date: new Date(),
             cart: cart,
         }
-        await db.collection('Orders').doc().set(order)
+        await db
+            .collection('orders')
+            .add(order)
+            .then((doc) =>
+                document
+                    .getElementById('orderNumber')
+                    .append(
+                        `Orden ingresada exitosamente! Su codigo de compra es ${doc.id}`
+                    )
+            )
     }
 
     return (
@@ -51,6 +62,8 @@ function Checkout() {
                     Realizar pedido
                 </Button>
             </Form>
+
+            <p id="orderNumber"></p>
         </div>
     )
 }
