@@ -31,7 +31,11 @@
 .categorySelector {
     grid-area: categorySelector;
     height: 25px;
-    margin-top: 45px;
+    margin-top: 40px;
+}
+
+div.ui.selection.dropdown.categorySelector {
+    width: 200px;
 }
 
 .carrito {

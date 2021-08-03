@@ -15,8 +15,6 @@ const ItemListContainer = () => {
         setItems(data)
     }, [categoryName, database])
 
-    console.log(`category`, categoryName)
-
     return (
         <div className="container">
             <ItemList items={items} />
